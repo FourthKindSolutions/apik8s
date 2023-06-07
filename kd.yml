@@ -3,7 +3,7 @@
   kind: "Deployment"
   metadata: 
     name: "keycloak-development"
-    namespace: "development"
+    namespace: "keycloak"
   spec: 
     selector: 
       matchLabels: 
