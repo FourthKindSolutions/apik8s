@@ -133,7 +133,7 @@ metadata:
   namespace: kong
 spec:
   rules:
-    - host: admin.testdomain.com.br
+    - host: admin.k8s-dev.dombase.net
       http:
         paths:
           - path: /
