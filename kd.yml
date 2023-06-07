@@ -39,11 +39,11 @@
                 value: "true"
               -
                 name: "KEYCLOAK_FRONTEND_URL"
-                value: "https://Mykeycloak-development/auth/"
+                value: "https://keycloak.k8s-dev.dombase.net/auth/"
                 
               -
                 name: "KEYCLOAK_ADMIN_URL"
-                value: "https://Mkeycloak-  development/auth/realms/master/admin/"
+                value: "https://keycloak-admin.k8s-dev.dombase.net/auth/realms/master/admin/"
                 
             ports: 
               
