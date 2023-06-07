@@ -124,22 +124,25 @@ spec:
   selector:
     app: proxy
 ---
-kind: Ingress
 apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
-  name: proxy
+  name: admin
   namespace: kong
 spec:
   rules:
-  - host: proxy.k8s-dev.dombase.net
-    http:
-      paths:
-      - backend:
-          serviceName: proxy
-          servicePort: 80
-        path: /
+    - host: proxy.k8s-dev.dombase.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: admin
+                port:
+                  number: 80
 ---
 apiVersion: batch/v1
 kind: Job
