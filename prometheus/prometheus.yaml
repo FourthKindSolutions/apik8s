@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: monitoring
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: prometheus
@@ -154,7 +154,7 @@ data:
           action: replace
           target_label: kubernetes_name
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: prometheus
@@ -222,8 +222,8 @@ spec:
       targetPort: 9090 
       nodePort: 30000
 ---
-kind: Ingress
 apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -231,10 +231,13 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: prometheus.k8s-dev.dombase.net
-    http:
-      paths:
-      - backend:
-          serviceName: prometheus
-          servicePort: 8080
-        path: /
+    - host: prometheus.k8s-dev.dombase.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus
+                port:
+                  number: 8080 
