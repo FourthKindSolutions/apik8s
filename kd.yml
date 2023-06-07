@@ -43,7 +43,7 @@
                 
               -
                 name: "KEYCLOAK_ADMIN_URL"
-                value: "https://keycloak-admin.k8s-dev.dombase.net/auth/realms/master/admin/"
+                value: "https://keycloak.k8s-dev.dombase.net/auth/realms/master/admin/"
                 
             ports: 
               
